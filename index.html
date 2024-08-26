@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izhan Ali's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #004d40, #00796b);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #004d40;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 80px;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 12px 20px;
+            display: inline-block;
+            border-radius: 25px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #00796b;
+            color: #fff;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding-top: 160px; /* Space for the fixed header and nav */
+            transition: padding-top 0.3s;
+        }
+
+        /* Sections */
+        section {
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            background-color: #ffffff;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .dark-mode section {
+            background-color: #1e1e1e;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #004d40;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: #00796b;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        /* About Me Section */
+        .about-me {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .about-me img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 6px solid #004d40;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .about-me img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-me h2 {
+            font-size: 2.5rem;
+            color: #004d40;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .about-me p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .skills, .projects, .contact {
+            padding: 20px;
+        }
+
+        .skills ul, .projects ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skills ul li, .projects ul li {
+            background-color: #f9f9f9;
+            margin-bottom: 12px;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .skills ul li:hover, .projects ul li:hover {
+            background-color: #004d40;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .skills ul li i, .projects ul li i {
+            margin-right: 12px;
+            color: #00796b;
+            font-size: 1.5rem;
+        }
+
+        .projects ul li a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: bold;
+            display: inline-block;
+            width: 100%;
+            transition: color 0.3s;
+        }
+
+        .projects ul li a:hover {
+            color: #ffffff;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact form input, .contact form textarea {
+            padding: 10px;
+            border: 1px solid #050000;
+            border-radius: 10px;
+            font-size: 1rem;
+            width: 90%;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .contact form input:focus, .contact form textarea:focus {
+            border-color: #004d40;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 77, 64, 0.3);
+        }
+
+        .contact form button {
+            background-color: #004d40;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .contact form button:hover {
+            background-color: #00796b;
+            transform: scale(1.05);
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #004d40;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .dark-mode .dark-mode-toggle {
+            background-color: #c62828;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #00796b;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Izhan Ali's Portfolio</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about" class="about-me">
+            <img src="image.jpg" alt="Izhan Ali">
+            <div>
+                <h2>About Me</h2>
+                <p>Hello! I'm Izhan Ali, a passionate software engineer from Karachi. I am currently pursuing my studies in Pre-Engineering and have a strong interest in technology and software development. My goal is to become a proficient software engineer and work on innovative projects that make a difference. I am focused, dedicated, and always eager to learn and grow in my field.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li><i class="fas fa-code"></i> Web Development</li>
+                <li><i class="fas fa-database"></i> Database Management</li>
+                <li><i class="fas fa-robot"></i> Artificial Intelligence</li>
+            </ul>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2>Projects</h2>
+            <ul>
+                <li><i class="fas fa-laptop-code"></i> <a href="#">Portfolio Website</a></li>
+                <li><i class="fas fa-tasks"></i> To-Do List App</li>
+                <li><i class="fas fa-calculator"></i> Calculator App</li>
+            </ul>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact Me</h2>
+            <form>
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>Contact me at: <i>izhanali176@gmail.com</i></p>
+    </footer>
+
+    <button class="dark-mode-toggle">Toggle Dark Mode</button>
+
+    <script>
+        const toggleButton = document.querySelector('.dark-mode-toggle');
+        const body = document.body;
+
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+    </script>
+
+</body>
+</html>
